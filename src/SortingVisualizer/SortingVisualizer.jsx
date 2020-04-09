@@ -36,10 +36,19 @@ export default class SortingVisualizer extends React.Component {
   }
 
   reverseArray() {
+    const ar = this.state.array;
+    ar.sort(function (a, b) { return b - a });
+    this.setState({ ar });
+  }
+
+  partialSort() {
     const array = [];
-    let j = 400;
-    for (let i = NUMBER_OF_ARRAY_BARS; i >= 0; i--) {
-      array.push(j--);
+    let m = 5;
+    let n = 50;
+    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
+      array.push(randomIntFromInterval(m, n))
+      m += 2;
+      n += 2;
     }
     this.setState({ array });
   }
@@ -172,6 +181,7 @@ export default class SortingVisualizer extends React.Component {
         ))}
         <button onClick={() => this.resetArray()}>Generate New Array</button>
         <button onClick={() => this.reverseArray()}>Generate a Reversed Array</button>
+        <button onClick={() => this.partialSort()}>Generate a Partially Sorted Array</button>
         <button onClick={() => this.mergeSort()}>Merge Sort</button>
         <button onClick={() => this.quickSort()}>Quick Sort</button>
         <button onClick={() => this.heapSort()}>Heap Sort</button>

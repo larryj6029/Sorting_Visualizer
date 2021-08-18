@@ -1,5 +1,5 @@
 .array-container {
-  position: absolute;
+  /* position: absolute; */
   left: 100px;
   /* top: 100px; */
 }
@@ -7,5 +7,21 @@
 .array-bar {
   width: 2px;
   display: inline-block;
-  margin: 0 1px;
+  margin: 100px 1px;
+}
+
+.sorting-container {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  margin: 20px 0px 20px 0px;
+}
+.generator-container {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  margin: 20px 0px 20px 0px;
+}
+.button-container button {
+  margin-left: 20px;
 }

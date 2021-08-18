@@ -1,12 +1,17 @@
 import React from 'react';
-import { getMergeSortAnimations, getQuickSortAnimations, getBubbleSortAnimations, getHeapSortAnimations } from '../sortingAlgorithms/sortingAlgorithms.js';
+import {
+  getMergeSortAnimations,
+  getQuickSortAnimations,
+  getBubbleSortAnimations,
+  getHeapSortAnimations,
+} from '../sortingAlgorithms/sortingAlgorithms.js';
 import './SortingVisualizer.css';
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED_MS = 1;
 
 // Change this value for the number of bars (value) in the array.
-const NUMBER_OF_ARRAY_BARS = 325;
+const NUMBER_OF_ARRAY_BARS = 300;
 
 // This is the main color of the array bars.
 const PRIMARY_COLOR = 'turquoise';
@@ -32,13 +37,15 @@ export default class SortingVisualizer extends React.Component {
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
       array.push(randomIntFromInterval(5, 700));
     }
-    this.setState({ array });
+    this.setState({array});
   }
 
   reverseArray() {
     const ar = this.state.array;
-    ar.sort(function (a, b) { return b - a });
-    this.setState({ ar });
+    ar.sort(function (a, b) {
+      return b - a;
+    });
+    this.setState({ar});
   }
 
   partialSort() {
@@ -46,11 +53,11 @@ export default class SortingVisualizer extends React.Component {
     let m = 5;
     let n = 50;
     for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-      array.push(randomIntFromInterval(m, n))
+      array.push(randomIntFromInterval(m, n));
       m += 2;
       n += 2;
     }
-    this.setState({ array });
+    this.setState({array});
   }
 
   mergeSort() {
@@ -166,29 +173,48 @@ export default class SortingVisualizer extends React.Component {
   }
 
   render() {
-    const { array } = this.state;
+    const {array} = this.state;
 
     return (
-      <div className="array-container">
-        {array.map((value, idx) => (
-          <div
-            className="array-bar"
-            key={idx}
-            style={{
-              backgroundColor: PRIMARY_COLOR,
-              height: `${value}px`,
-            }}></div>
-        ))}
-        <button onClick={() => this.resetArray()}>Generate New Array</button>
-        <button onClick={() => this.reverseArray()}>Generate a Reversed Array</button>
-        <button onClick={() => this.partialSort()}>Generate a Partially Sorted Array</button>
-        <button onClick={() => this.mergeSort()}>Merge Sort</button>
-        <button onClick={() => this.quickSort()}>Quick Sort</button>
-        <button onClick={() => this.heapSort()}>Heap Sort</button>
-        <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
-        <button onClick={() => this.testSortingAlgorithms()}>
-          Test Sorting Algorithms (Change function)
-        </button>
+      <div className="container">
+        <div
+          className="array-container"
+          style={{top: '100px', right: '100px', height: '800px'}}>
+          {array.map((value, idx) => (
+            <div
+              className="array-bar"
+              key={idx}
+              style={{
+                backgroundColor: PRIMARY_COLOR,
+                height: `${value}px`,
+              }}></div>
+          ))}
+        </div>
+        <div className="button-container">
+          <h2>Generate Different Scenarios</h2>
+          <div className="generator-container">
+            <button onClick={() => this.resetArray()}>
+              Generate New Array
+            </button>
+            <button onClick={() => this.reverseArray()}>
+              Generate a Reversed Array
+            </button>
+            <button onClick={() => this.partialSort()}>
+              Generate a Partially Sorted Array
+            </button>
+          </div>
+          <br />
+          <div className="sorting-container">
+            <h2>Start Sorting!</h2>
+            <button onClick={() => this.mergeSort()}>Merge Sort</button>
+            <button onClick={() => this.quickSort()}>Quick Sort</button>
+            <button onClick={() => this.heapSort()}>Heap Sort</button>
+            <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+            {/* <button onClick={() => this.testSortingAlgorithms()}>
+              Test Sorting Algorithms (Change function)
+            </button> */}
+          </div>
+        </div>
       </div>
     );
   }

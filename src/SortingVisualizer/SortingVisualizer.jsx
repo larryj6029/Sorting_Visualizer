@@ -215,7 +215,9 @@ export default class SortingVisualizer extends React.Component {
             </button> */}
           </div>
         </div>
-        <a href="https://path-finder-ljsn6029.herokuapp.com/">Path Finding</a>
+        <a href="https://path-finder-ljsn6029.herokuapp.com/">
+          Path Finding Visualizer
+        </a>
       </div>
     );
   }
